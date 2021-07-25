@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&family=Quicksand:wght@400;700&display=swap&family=Muli');
+
+* {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Mulish', sans-serif;
+    text-align: center;
+    color: #2c3e50;
+    background-color: #F1F4F5;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.text-black {
+    color: #000;
+}
+
+.text-grey {
+    color: #616161;
+}
+
+.text-blue {
+    color: #01B1EC;
+}
+
+.icon-grey {
+    color: #E1E1E1;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.hr-blue {
+    border: 0.5px solid #01B1EC;
+}
+
+.space {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    width: 45%;
+    align-items: center;
+}
+
+.rotate-90 {
+    transform: rotate(-90deg);
+}
+
+.card {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    background: #ffffff;
+    box-shadow: 0px 4px 20px rgba(225, 225, 225, 0.5);
+    border-radius: 8px;
+}
+
+button,
+.btn,
+.material-icons:hover {
+    cursor: pointer;
+}
