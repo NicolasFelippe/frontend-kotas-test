@@ -1,42 +1,45 @@
 <template>
-  <div class="card">
-    <div class="content">
-      <div class="row">
-        <h3 class="text-grey">Mensalidade</h3>
-        <h3 class="sub-text text-grey">{{ sumMonthlyPayment }}</h3>
-      </div>
-      <div class="row">
-        <h3 class="text-grey">Kotas</h3>
-        <h3 class="sub-text text-grey sum-kotas">
-          {{ sumKotas }}
-          <button class="btn-rounded" @click="sumKotas += 1">
-            <span class="material-icons">add</span>
-          </button>
-          <button class="btn-rounded" @click="decreaseKotas">
-            <span class="material-icons">remove</span>
-          </button>
-        </h3>
-      </div>
-      <div class="row">
-        <div class="sub-row">
-          <h3 class="text-grey">Caução</h3>
-          <span class="material-icons icon-grey">info</span>
+  <div>
+    <div class="card">
+      <div class="content">
+        <div class="row">
+          <h3 class="text-grey">Mensalidade</h3>
+          <h3 class="sub-text text-grey">{{ sumMonthlyPayment }}</h3>
         </div>
-        <h3 class="sub-text text-grey">{{ sumSecurityDeposit }}</h3>
-      </div>
-      <div>
-        <div class="row sign">
-          <h3 class="bold text-black">Total da Inscrição</h3>
-          <h3 class="bold text-black">{{ sumTotal }}</h3>
+        <div class="row">
+          <h3 class="text-grey">Kotas</h3>
+          <h3 class="sub-text text-grey sum-kotas">
+            {{ sumKotas }}
+            <button class="btn-rounded" @click="sumKotas += 1">
+              <span class="material-icons">add</span>
+            </button>
+            <button class="btn-rounded" @click="decreaseKotas">
+              <span class="material-icons">remove</span>
+            </button>
+          </h3>
         </div>
-        <div class="column">
-          <div>
-            <SliderRadioButton />
+        <div class="row">
+          <div class="sub-row">
+            <h3 class="text-grey">Caução</h3>
+            <span class="material-icons icon-grey">info</span>
           </div>
-          <button class="btn-participate">Participar</button>
+          <h3 class="sub-text text-grey">{{ sumSecurityDeposit }}</h3>
+        </div>
+        <div>
+          <div class="row sign">
+            <h3 class="bold text-black">Total da Inscrição</h3>
+            <h3 class="bold text-black">{{ sumTotal }}</h3>
+          </div>
+          <div class="column">
+            <div>
+              <SliderRadioButton />
+            </div>
+            <button class="btn-participate">Participar</button>
+          </div>
         </div>
       </div>
     </div>
+    <p class="detail">Você ainda não será cobrado</p>
   </div>
 </template>
 
@@ -54,7 +57,6 @@ export default {
       sumKotas: 1,
       monthlyPayment: 15,
       securityDeposit: 15,
-
     }
   },
   computed: {
@@ -66,12 +68,17 @@ export default {
       return this.formatCurrency(this.securityDeposit * this.sumKotas)
     },
     sumTotal() {
-      return this.formatCurrency((this.monthlyPayment + this.securityDeposit) * this.sumKotas)
+      return this.formatCurrency(
+        (this.monthlyPayment + this.securityDeposit) * this.sumKotas,
+      )
     },
   },
   methods: {
     formatCurrency(value) {
-      return new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(value)
+      return new Intl.NumberFormat('pt-br', {
+        style: 'currency',
+        currency: 'BRL',
+      }).format(value)
     },
     decreaseKotas() {
       if (this.sumKotas > 1) this.sumKotas -= 1
@@ -157,6 +164,12 @@ export default {
     font-size: 14px;
     line-height: 110%;
     margin-top: 16px;
+  }
+  .detail {
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 120%;
+    color: #616161;
   }
 }
 </style>
