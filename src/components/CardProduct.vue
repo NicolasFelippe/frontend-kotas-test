@@ -107,7 +107,7 @@ export default {
     align-content: center;
     justify-content: center;
     -moz-column-gap: 20px;
-    column-gap: 15px;
+    column-gap: 30px;
     .column {
       display: flex;
       flex-direction: column;
