@@ -1,7 +1,7 @@
 <template>
   <div class="checkboxgroup">
     <label :for="label" :style="classLabelTop">{{ labelTop }}</label>
-    <input type="radio" :id="label" :name="name" :class="inputClass"  :value="value" />
+    <input type="radio" :id="label" :name="name" :class="inputClass" v-model="radioButtonValue"  :value="label" />
     <label :for="label" :style="classLabel">{{ label }}</label>
   </div>
 </template>
@@ -11,6 +11,10 @@ export default {
   name: 'RadioButton',
   props: {
     label: {
+      type: String,
+      require: true,
+    },
+    model: {
       type: String,
       require: true,
     },
@@ -37,6 +41,16 @@ export default {
     value: {
       type: String,
       require: true,
+    },
+  },
+  computed: {
+    radioButtonValue: {
+      get() {
+        return this.value
+      },
+      set() {
+        this.$emit('change', this.label)
+      },
     },
   },
 }

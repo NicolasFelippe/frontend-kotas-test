@@ -6,7 +6,8 @@
       name="sign"
       :classLabelTop="[labelTop]"
       :classLabel="[label]"
-      value="1"
+      :value="selectedValue"
+      @change="changeValue"
     />
     <div class="space" />
     <RadioButton
@@ -15,7 +16,8 @@
       name="sign"
       :classLabelTop="[labelTop]"
       :classLabel="[label]"
-      value="2"
+      :value="selectedValue"
+      @change="changeValue"
     />
     <div class="space" />
     <RadioButton
@@ -24,7 +26,8 @@
       name="sign"
       :classLabelTop="[labelTop, success]"
       :classLabel="[label]"
-      value="3"
+      :value="selectedValue"
+      @change="changeValue"
     />
   </div>
 </template>
@@ -39,6 +42,7 @@ export default {
   },
   data() {
     return {
+      selectedValue: 'Assinatura',
       label: {
         'font-family': 'Quicksand',
         'font-style': 'normal',
@@ -59,6 +63,12 @@ export default {
         color: '#26B36A',
       },
     }
+  },
+  methods: {
+    changeValue(newValue) {
+      console.log(newValue)
+      this.selectedValue = newValue
+    },
   },
 }
 </script>
